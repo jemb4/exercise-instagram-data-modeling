@@ -13,7 +13,7 @@ class User(Base):
     __tablename__ = 'User'
     # Here we define columns for the table person
     # Notice that each column is also a normal Python instance attribute.
-    ID = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     username = Column(String(30), nullable=False)
     password = Column(String(30), nullable=False)
     firstname = Column(String(30))
@@ -22,39 +22,39 @@ class User(Base):
 
 class Post(Base):
     __tablename__ = 'Post'
-    ID = Column(Integer, primary_key=True)
-    user_ID = Column(Integer, ForeignKey('User.ID'))
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('User.id'))
     url = Column(String)
 
 class Follower(Base):
     __tablename__ = 'Follower'
-    ID = Column(Integer, primary_key=True)
-    user_from_ID = Column(Integer, ForeignKey('User.ID'))
-    user_to_ID = Column(Integer, ForeignKey('User.ID'))
+    id = Column(Integer, primary_key=True)
+    user_from_id = Column(Integer, ForeignKey('User.id'))
+    user_to_id = Column(Integer, ForeignKey('User.id'))
 
 class Comment(Base):
     __tablename__ = 'Comment'
-    ID = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     comment_text = Column(String(500), nullable=False)
-    post_ID = Column(Integer, ForeignKey('Post.ID'))
-    author_ID = Column(Integer, ForeignKey('User.ID'))
+    post_id = Column(Integer, ForeignKey('Post.id'))
+    author_id = Column(Integer, ForeignKey('User.id'))
 
 class Private_msg(Base):
     __tablename__ = 'Private_msg'
-    ID = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     private_msg = Column(String, nullable=False)
-    user_from_ID = Column(Integer, ForeignKey('User.ID'))
-    user_to_ID = Column(Integer, ForeignKey('User.ID'))
+    user_from_id = Column(Integer, ForeignKey('User.id'))
+    user_to_id = Column(Integer, ForeignKey('User.id'))
 
 class Saved_post(Base):
     __tablename__ = "Saved_post"
-    ID = Column(Integer, primary_key=True)
-    post_ID = Column(Integer, ForeignKey('Post.ID'))
+    id = Column(Integer, primary_key=True)
+    post_id = Column(Integer, ForeignKey('Post.id'))
 
 class Fav_comment(Base):
     __tablename__ = "Fav_comment"
-    ID = Column(Integer, primary_key=True)
-    comment_ID = Column(Integer, ForeignKey('Comment.ID'))
+    id = Column(Integer, primary_key=True)
+    comment_id = Column(Integer, ForeignKey('Comment.id'))
 
 
 
